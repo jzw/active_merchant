@@ -12,7 +12,7 @@ module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
     class BraintreeBlueGateway < Gateway
       include BraintreeCommon
-      
+
       self.display_name = 'Braintree (Blue Platform)'
 
       def initialize(options = {})
@@ -152,6 +152,7 @@ module ActiveMerchant #:nodoc:
         parameters = {
           :amount => amount(money).to_s,
           :order_id => options[:order_id],
+          :customer_id => options[:customer_id]
           :customer => {
             :id => options[:store] == true ? "" : options[:store],
             :email => options[:email]
